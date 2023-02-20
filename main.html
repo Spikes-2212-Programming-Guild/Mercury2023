@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en"><title>main at the best app ever</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<body style="background-color:rgb(0, 47, 255);align-items: center;">
+<h1 style="color: rgb(255, 255, 255);">spikes2212</h1>
+<button onclick="openGroupInfo()">Enter group info</button>
+<button onclick="openGrid()">open grid</button>
+<button onclick="openLastPart()">open the other questions</button>
+<!-- <button onclick="veryTest()">get my cookie so no one eat it</button> -->
+<button onclick="answarePLZ()">send res</button>
+
+<script src = "grid.js"></script>
+<script src = "buildLink.js"></script>
+<script src = "GoogleDoesntHaveKeyboardWithEnter.js"></script>
+
+<script>
+function openGrid(){
+    window.open('grid.html')
+}
+function openGroupInfo(){
+    window.open('goodForm.html?qs=q0q4')
+}
+function openLastPart(){
+    window.open('goodForm.html?qs=q15q21')
+}
+
+function veryTest(){
+    console.log(document.cookie.split("link=")[1].split("expires")[0])
+    console.log(document.cookie.split("link1=")[1].split("expires")[0])
+    console.log(document.cookie.split("link2=")[1].split("expires")[0])
+}
+
+function answarePLZ(){
+    window.open('https://docs.google.com/forms/d/e/1FAIpQLScuioqPC4Ppw7OpSQ7ViJmiPlTAQ1c3rbzOksuDDPlmMS5s1w/viewform?' + document.cookie.split("link=")[1].split("expires")[0] + document.cookie.split("link1=")[1].split("expires")[0] + document.cookie.split("link2=")[1].split("expires")[0])
+}
+</script>
+</body></html>
