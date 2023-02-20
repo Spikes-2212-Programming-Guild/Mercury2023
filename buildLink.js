@@ -52,7 +52,9 @@ function fillFromArray(fromWhere, answares){
     let theLink = ""
 
     for(let i = fromWhere; i < fromWhere + answares.length ;i++){
+        console.log("i:"+i-fromWhere)
         for(let j = 0; j < answares[i-fromWhere].length;j++){
+            console.log("j:"+j)
             theLink += "&entry." + entrys[i] + "=" + answares[i-fromWhere][j]
         }
     }
