@@ -41,7 +41,7 @@ function buildArr(){
         //console.log(document.getElementById("textBox"+i).type)
     }
     console.log(arr)
-    createCookie('link1', fillFromArray(Number(range[1]), arr))
+    createCookie('link' + Number(range[1]) , fillFromArray(Number(range[1]), arr))
     window.close()
 }
 </script>
