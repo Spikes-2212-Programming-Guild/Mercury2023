@@ -21,11 +21,13 @@
 <button onclick="createCookie()">Yamy cookie</button> -->
 
 <script>
+    let range = new URLSearchParams(window.location.search);
+    range = range.get('qs').split('q');
     //toast()
     buildHTML()
 
     function sendAndCreate(){
-        createCookie('link', fillFromTamble(buildArray(), 4))
+        createCookie('Gridlink' + Number(range[1]), fillFromTamble(buildArray(), Number(range[1])))
         window.close()
     }
     
