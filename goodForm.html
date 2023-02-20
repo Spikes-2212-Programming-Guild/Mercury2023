@@ -16,7 +16,7 @@ let range = new URLSearchParams(window.location.search);
 range = range.get('qs').split('q');
 console.log(range);
 
-buildHTML(range[1], range[2])
+buildHTML(Number(range[1]), Number(range[2]))
 function buildArr(){
     let arr = [[],[]]
     for(let i = 0; document.getElementById("textBox"+i) != undefined || document.getElementById("textBox"+i+"row"+1) != undefined ;i++){
@@ -41,7 +41,12 @@ function buildArr(){
         //console.log(document.getElementById("textBox"+i).type)
     }
     console.log(arr)
-    createCookie('link' + Number(range[1]) , fillFromArray(Number(range[1]), arr))
+    //console.log("arrrr" + Number(range[1]))
+    createCookie(("link" + Number(range[1])) , fillFromArray(Number(range[1]), arr))
+    //createCookie('test', "9009")
+    //createCookie('link0' , fillFromArray(Number(range[1]), arr))
+    //console.log(document.cookie.split("test=")[1].split("expires")[0])
+    console.log(document.cookie.split("link0=")[1].split("expires")[0])
     window.close()
 }
 </script>
