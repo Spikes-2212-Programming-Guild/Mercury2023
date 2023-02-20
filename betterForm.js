@@ -7,6 +7,7 @@ let Questions = [["שם סקאוטר"], ["מספר משחק (למשל q18)"], ["
 function buildHTML(formwhere, until){
     let tambel = document.createElement("table")
     //tambel.style.alignSelf = "center"
+    // document.body.appendChild(document.createElement("button"))
     for(let i = formwhere, row, cell, text, textBox; i < until ;i++){
         row = tambel.insertRow(i-formwhere)
         cell = row.insertCell(0)
