@@ -6,6 +6,7 @@
 <h1 style="color: rgb(255, 255, 255);">spikes2212</h1>
 <button onclick="openGroupInfo()">Enter group info</button>
 <button onclick="openGrid()">open grid</button>
+<button onclick="openGrid2()">open grid2</button>
 <button onclick="openLastPart()">open the other questions</button>
 <!-- <button onclick="veryTest()">get my cookie so no one eat it</button> -->
 <button onclick="answarePLZ()">send res</button>
@@ -16,7 +17,10 @@
 
 <script>
 function openGrid(){
-    window.open('grid.html')
+    window.open('grid.html?qs=q4')
+}
+function openGrid2(){
+    window.open('grid.html?qs=q10')
 }
 function openGroupInfo(){
     window.open('goodForm.html?qs=q0q4')
@@ -32,7 +36,7 @@ function veryTest(){
 }
 
 function answarePLZ(){
-    window.open('https://docs.google.com/forms/d/e/1FAIpQLScuioqPC4Ppw7OpSQ7ViJmiPlTAQ1c3rbzOksuDDPlmMS5s1w/viewform?' + document.cookie.split("link=")[1].split("expires")[0] + document.cookie.split("link0=")[1].split("expires")[0] + document.cookie.split("link15=")[1].split("expires")[0])
+    window.open('https://docs.google.com/forms/d/e/1FAIpQLScuioqPC4Ppw7OpSQ7ViJmiPlTAQ1c3rbzOksuDDPlmMS5s1w/viewform?' + document.cookie.split("Gridlink4=")[1].split("expires")[0] + document.cookie.split("Gridlink10=")[1].split("expires")[0] + document.cookie.split("link0=")[1].split("expires")[0] + document.cookie.split("link15=")[1].split("expires")[0])
 }
 </script>
 </body></html>
