@@ -17,27 +17,50 @@
 <script src = "grid.js"></script>
 <script src="buildLink.js"></script>
 <script src="modifyCookies.js"></script>
+<script src="pages.js"></script>
+
 <!-- <button onclick="linkolen()">build</button>
 <button onclick="createCookie()">Yamy cookie</button> -->
 
 <script>
     let range = new URLSearchParams(window.location.search);
     range = range.get('qs').split('q');
+    
+    let nextPage = new URLSearchParams(window.location.search);
+    nextPage = Number(nextPage.get('index'));
+    console.log(nextPage)
+
     //toast()
     buildHTML()
 
     function sendAndCreate(){
         createCookie('Gridlink' + Number(range[1]), fillFromTamble(buildArray(), Number(range[1])))
-        window.close()
+        // if(getPages().length > nextPage){
+        //     window.open(getPages()[nextPage] + '&index=' + (nextPage+1))
+        // }
+        // window.close()
     }
     
-    function test(){
-        console.log("seccses")
+    function goforward(){
+        sendAndCreate()
+        if(getPages().length > nextPage){
+            window.open(getPages()[nextPage] + '&index=' + (nextPage+1))
+        }
+        window.close()
+    }
+
+    function goback(){
+        sendAndCreate()
+        if(nextPage > 1){
+            window.open(getPages()[nextPage-2] + '&index=' + (nextPage-1))
+        }
+        window.close()
     }
 </script>
 <!-- &ensp; -->
-<script src="timer.js"></script>
+<!-- <script src="timer.js"></script> -->
 
 <!-- &ensp; -->
-<center><button onclick="sendAndCreate()" id="saveButton" style="width: 95%; height: 50px; background-color: rgb(0, 199, 90); border-color: rgb(0, 131, 39); color: rgb(255, 255, 255); font-size: 32px;">Save</button></center>
+<button onclick="goforward()" id="saveButton" style="width: 45%; height: 50px; background-color: rgb(0, 199, 90); border-color: rgb(0, 131, 39); color: rgb(255, 255, 255); font-size: large; margin: 0 auto; display: inline-block;">Next</button>
+<button onclick="goback()" id="saveButton" style="width: 45%; height: 50px; background-color: rgb(0, 199, 90); border-color: rgb(0, 131, 39); color: rgb(255, 255, 255); font-size: large; margin: 0 auto; display: inline-block;">Back</button>
 </body></html>
