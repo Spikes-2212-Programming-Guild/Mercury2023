@@ -4,19 +4,47 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <body style="background-color:rgb(0, 47, 255);align-items: center;">
 <h1 style="color: rgb(255, 255, 255);">spikes2212</h1>
-<button onclick="openGroupInfo()">Enter group info</button>
-<button onclick="openGrid()">open grid</button>
-<button onclick="openGrid2()">open grid2</button>
-<button onclick="openMiddlePart()">open the middle questions</button>
-<button onclick="openLastPart()">open the other questions</button>
+<table>
+    <!-- <tr>
+        
+            <button onclick="openGroupInfo()" style="width: 100%; height: 30px; font-size: 18px;">Enter group info</button>
+    </tr>
+    <tr><p></p></tr>
+    <tr>
+            <button onclick="openGrid()" style="width: 50%">Autonomous grid</button>        
+            <button onclick="openGrid2()" style="width: 50%">Teleop grid</button>
+        
+    </tr>
+    <tr>
+            <button onclick="openMiddlePart()" style="width: 50%">Autonomous climbed</button>
+            <button onclick="openLastPart()" style="width: 50%">Teleop info</button>
+        
+    </tr>
+    <tr><p></p></tr> -->
+    <tr>
+            <button onclick="startQuiz()" style="width: 100%">Enter Info</button>
+    </tr>
+    <tr>
+            &ensp;
+           <button onclick="answarePLZ()" style="width: 100%; height: 50px; font-size: 30px; background: rgb(22, 185, 30); border: none; color: white">Send data >></button>
+        
+    </tr>
+</table>
+
 <!-- <button onclick="veryTest()">get my cookie so no one eat it</button> -->
-<button onclick="answarePLZ()">send res</button>
 
 <script src = "grid.js"></script>
 <script src = "buildLink.js"></script>
 <script src = "GoogleDoesntHaveKeyboardWithEnter.js"></script>
+<Script src = "modifyCookies.js"></Script>
+<script src = "pages.js"></script>
 
 <script>
+
+function startQuiz(){
+    window.open(getPages()[0] + '&index=' + (1))//'goodForm.html?qs=q0q4')//
+}
+
 function openGrid(){
     window.open('grid.html?qs=q4')
 }
@@ -24,7 +52,7 @@ function openGrid2(){
     window.open('grid.html?qs=q10')
 }
 function openGroupInfo(){
-    window.open('goodForm.html?qs=q0q4')
+    window.open('goodForm.html?qs=q0q4&index=0')
 }
 function openMiddlePart(){
     window.open('goodForm.html?qs=q9q10')
@@ -40,7 +68,9 @@ function veryTest(){
 }
 
 function answarePLZ(){
-    window.open('https://docs.google.com/forms/d/e/1FAIpQLScuioqPC4Ppw7OpSQ7ViJmiPlTAQ1c3rbzOksuDDPlmMS5s1w/viewform?' + document.cookie.split("Gridlink4=")[1].split("expires")[0] + document.cookie.split("Gridlink10=")[1].split("expires")[0] + document.cookie.split("link0=")[1].split("expires")[0]  + document.cookie.split("link9=")[1].split("expires")[0] + document.cookie.split("link15=")[1].split("expires")[0])
+    //console.log(document.cookie.split("link15=")[1].split("expires")[0])
+    //console.log('https://docs.google.com/forms/d/e/1FAIpQLScuioqPC4Ppw7OpSQ7ViJmiPlTAQ1c3rbzOksuDDPlmMS5s1w/viewform?' + document.cookie.split("Gridlink4=")[1].split("expires")[0] + document.cookie.split("Gridlink10=")[1].split("expires")[0] + document.cookie.split("link0=")[1].split("expires")[0]  + document.cookie.split("link9=")[1].split("expires")[0] + document.cookie.split("link15=")[1].split("expires")[0] + document.cookie.split("link16=")[1].split("expires")[0])
+    window.open('https://docs.google.com/forms/d/e/1FAIpQLScuioqPC4Ppw7OpSQ7ViJmiPlTAQ1c3rbzOksuDDPlmMS5s1w/viewform?' + document.cookie.split("Gridlink4=")[1].split("expires")[0] + document.cookie.split("Gridlink10=")[1].split("expires")[0] + document.cookie.split("link0=")[1].split("expires")[0]  + document.cookie.split("link9=")[1].split("expires")[0] + document.cookie.split("link15=")[1].split("expires")[0] + document.cookie.split("link16=")[1].split("expires")[0])
     //window.open('https://docs.google.com/forms/d/e/1FAIpQLScuioqPC4Ppw7OpSQ7ViJmiPlTAQ1c3rbzOksuDDPlmMS5s1w/viewform?' + document.cookie.split("Gridlink4=")[1].split("expires")[0] + document.cookie.split("Gridlink10=")[1].split("expires")[0] + document.cookie.split("link0=")[1].split("expires")[0] + document.cookie.split("link15=")[1].split("expires")[0])
     //window.open('https://docs.google.com/forms/d/e/1FAIpQLScuioqPC4Ppw7OpSQ7ViJmiPlTAQ1c3rbzOksuDDPlmMS5s1w/viewform?' + document.cookie.split("link9=")[1].split("expires")[0])
 }
