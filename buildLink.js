@@ -1,6 +1,6 @@
 //let entrysTest = ["test", "lol", "sus", "rtx","toast", "lolo", "sos", "rtox"]
 
-let entrys = ['215144253', '905624371', '238422655', '1069230788', '1462988536', '2091094295', '1551615938', '1899628979', '1336188914', '1485941316', '1534881471', '959011620', '995380584', '908622034', '1935087656', '1767549046', '1948424327', '1594794675', '952767415', '252823478', '1012333898']
+let entrys = ["215144253", "905624371", "238422655", "1069230788", "1462988536", "2091094295", "1551615938", "1899628979", "1336188914", "1485941316", "1534881471", "959011620", "995380584", "908622034", "1935087656", "1948424327", "1767549046", "1594794675", "952767415", "252823478", "1012333898"]
 //entrys = getEntrysSTR()
 
 function fillFromTamble(scoresArray, fromWhere){
@@ -60,6 +60,10 @@ function fillFromArray(fromWhere, answares){
     }
     theLink = encodeURI(theLink)
     return theLink
+}
+
+function fillOne(ondex, answare){
+    return encodeURI("&entry." + entrys[ondex] + "=" + answare)
 }
 
 //console.log(fillFromArray(1, ["hi", "hello", "world"]))
