@@ -79,16 +79,22 @@ function goforward(){
     buildArr()
     if(getPages().length > nextPage){
         window.open(getPages()[nextPage] + '&index=' + (nextPage+1))
-    }
     window.close()
+    }
+    else{
+        window.close()
+    }
 }
 
 function goback(){
     buildArr()
     if(nextPage > 1){
         window.open(getPages()[nextPage-2] + '&index=' + (nextPage-1))
-    }
     window.close()
+    }
+    else{
+        window.close()
+    }
 }
 
 </script>
