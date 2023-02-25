@@ -5,7 +5,7 @@ let cubeTextColor = "rgb(208,166,255)"
 let cone = '◮' // ▲ △ ⋀ ⧍ ▴ ◮ ▵ ∆
 let coneTextColor = "rgb(255,0,77)"
 let coneColor = "rgb(255, 255, 0)"
-let cube = '▢' // ■ ▣ ▪ ▨ ▩ █ ▦ ▢ ⎕ ⬕ □ ◨ ◪ ⬔ █ ▪
+let cube = '◨' // ■ ▣ ▪ ▨ ▩ █ ▦ ▢ ⎕ ⬕ □ ◨ ◪ ⬔ █ ▪
 
 function buildHTML(){
     
