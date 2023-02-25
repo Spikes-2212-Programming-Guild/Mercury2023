@@ -4,6 +4,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <body style="background-color:rgb(44, 44, 44);text-align: center; align-items: center; align-content: center; display: grid; place-items: center;">
 
+<script>
+    let TitlE = new URLSearchParams(window.location.search);
+    TitlE = TitlE.get('title')
+
+    let TitlE2 = document.createElement("h1")
+    TitlE2.textContent = TitlE
+    TitlE2.style.color = "white"
+    document.body.appendChild(TitlE2)
+</script>
+
+
 <script src="betterForm.js"></script>
 <script src="modifyCookies.js"></script>
 <script src="buildLink.js"></script>
@@ -21,6 +32,13 @@ let nextPage = new URLSearchParams(window.location.search);
 nextPage = Number(nextPage.get('index'));
 console.log(nextPage)
 
+try{
+    console.log(getCookieContent("link" + Number(range[1])))
+}
+catch{
+    console.log("not found")
+}
+
 buildHTML(Number(range[1]), Number(range[2]))
 function buildArr(){
     let arr = [[],[]]
@@ -29,12 +47,18 @@ function buildArr(){
         if(document.getElementById("textBox"+i) != undefined && document.getElementById("textBox"+i).type == "text"){
             arr[i][0] = document.getElementById("textBox"+i).value
             console.log(arr[i][0])
+            
+            // createCookie(Questions[i][0], document.getElementById("textBox"+i).value)
+            // console.log("new cookie: " + Questions[i][0] + " - " + document.getElementById("textBox"+i).value)
         }
         else{
             for(let j = 1, countor = 0; document.getElementById("textLabel" + i + "row" + j) != undefined && document.getElementById("textLabel" + i + "row" + j) != null ; j++){
                 if(document.getElementById("textBox" + i + "row" + j).checked){
                     arr[i][countor] = document.getElementById("textLabel" + i + "row" + j).textContent
                     countor++;
+                    
+                    // createCookie(Questions[i][j], document.getElementById("textLabel"+i+"row"+j).value)
+                    // console.log("new cookie: " + Questions[i][0] + " - " + document.getElementById("textLabel"+i+"row"+j).value)
                 }
                 console.log(document.getElementById("textLabel" + i + "row" + j).textContent)
                 console.log(document.getElementById("textBox" + i + "row" + j).checked)
@@ -46,8 +70,9 @@ function buildArr(){
         //console.log(document.getElementById("textBox"+i).type)
     }
     console.log(arr)
-
+    
     createCookie(("link" + Number(range[1])) , fillFromArray(Number(range[1]), arr))
+    
 }
 
 function goforward(){
