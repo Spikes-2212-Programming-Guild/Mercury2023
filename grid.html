@@ -55,16 +55,24 @@
         sendAndCreate()
         if(getPages().length > nextPage){
             window.open(getPages()[nextPage] + '&index=' + (nextPage+1))
+            window.close()
         }
-        window.close()
+        else{
+            window.close()
+        }
+        
     }
 
     function goback(){
         sendAndCreate()
         if(nextPage > 1){
             window.open(getPages()[nextPage-2] + '&index=' + (nextPage-1))
+            window.close()
         }
-        window.close()
+        else{
+            window.close()
+        }
+        
     }
 </script>
 <!-- &ensp; -->
