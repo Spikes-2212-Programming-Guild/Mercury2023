@@ -4,14 +4,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <body style="background-color:rgb(44, 44, 44); text-align: center;">
 
-<center>
+<script>
+    let TitlE = new URLSearchParams(window.location.search);
+    TitlE = TitlE.get('title')
+    
+    let TitlE2 = document.createElement("h1")
+    TitlE2.textContent = TitlE
+    TitlE2.style.color = "white"
+    document.body.appendChild(TitlE2)
+</script>
+
+<!-- <center>
 <table>
     <tr>
         <th><h1 style="color: white;">Grid-</h1></th>
         <th><h1 style="color: white;">מיקומים ב</h1></th>
     </tr>
 </table>
-</center>
+</center> -->
 
 <script src="Questions.js"></script>
 <script src = "grid.js"></script>
