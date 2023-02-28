@@ -25,6 +25,14 @@ function buildHTML(formwhere, until){
             textBox.style.height = window.innerWidth/10 + "px"
             textBox.style.fontSize = window.innerWidth/18 + "px"
             cell.appendChild(textBox)
+            try{
+                //textBox.value = document.cookie.split("textbox" + i)
+                textBox.value = document.cookie.split("textbox" + i + "=")[1].split("expires")[0]
+                //textBox.checked = true
+            }
+            catch{
+                console.log("cookie is empty 2")
+            }
         }
         else{
             for (let j = 1, lbl, tembel = document.createElement("table"), row, minicell; j < Questions[i].length; j++) {
@@ -40,6 +48,13 @@ function buildHTML(formwhere, until){
                 textBox.style.height = window.innerWidth/25 + "px"
                 textBox.style.width = window.innerWidth/25 + "px"
                 textBox.type = "checkbox"
+                try{
+                    textBox.checked = document.cookie.split("checkq" + i + "num" + (9*(i-formwhere)+j) + "=")[1].split("expires")[0]
+                    textBox.checked = true
+                }
+                catch{
+                    console.log("cookie is empty")
+                }
                 minicell.appendChild(lbl)
                 minicell.appendChild(textBox)
                 
