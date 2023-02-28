@@ -19,11 +19,12 @@ function buildHTML(GridNum){
                 txt.textContent = "High"
             }
             else if(i === 1){
-                txt.textContent = "Midle"
+                txt.textContent = "Middle"
             }
             else{
                 txt.textContent = "Bottom"
             }
+            txt.style.fontSize = "19px"
             // txt.textContent = "row: " + (i + 1)
             txt.style.color = "rgb(255,255,255)"
             //txt.align = "center"
