@@ -24,74 +24,91 @@
 
 <!-- <input type = "text"></input> -->
 <script>
-let range = new URLSearchParams(window.location.search);
-range = range.get('qs').split('q');
-console.log(range);
-
-let nextPage = new URLSearchParams(window.location.search);
-nextPage = Number(nextPage.get('index'));
-console.log(nextPage)
-
-try{
-    console.log(getCookieContent("link" + Number(range[1])))
-}
-catch{
-    console.log("not found")
-}
-
-buildHTML(Number(range[1]), Number(range[2]-1))
-function buildArr(){
-    let arr = [[],[]]
-    for(let i = 0; document.getElementById("textBox"+i) != undefined || document.getElementById("textBox"+i+"row"+1) != undefined ;i++){
-        arr[i] = []
-        if(document.getElementById("textBox"+i) != undefined && document.getElementById("textBox"+i).type == "text"){
-            arr[i][0] = document.getElementById("textBox"+i).value
-            console.log(arr[i][0])
-            
-            // createCookie(Questions[i][0], document.getElementById("textBox"+i).value)
-            // console.log("new cookie: " + Questions[i][0] + " - " + document.getElementById("textBox"+i).value)
+    let range = new URLSearchParams(window.location.search);
+    range = range.get('qs').split('q');
+    console.log(range);
+    
+    let nextPage = new URLSearchParams(window.location.search);
+    nextPage = Number(nextPage.get('index'));
+    console.log(nextPage)
+    
+    try{
+        console.log(getCookieContent("link" + Number(range[1])))
+    }
+    catch{
+        console.log("not found")
+    }
+    
+    buildHTML(Number(range[1]), Number(range[2])-1)
+    
+    function buildArr(){
+        let arr = [[],[]]
+        for(let i = 0; document.getElementById("textBox"+i) != undefined || document.getElementById("textBox"+i+"row"+1) != undefined ;i++){
+            arr[i] = []
+            if(document.getElementById("textBox"+i) != undefined && document.getElementById("textBox"+i).type == "text"){
+                arr[i][0] = document.getElementById("textBox"+i).value
+                console.log(arr[i][0])
+                
+                // createCookie(Questions[i][0], document.getElementById("textBox"+i).value)
+                // console.log("new cookie: " + Questions[i][0] + " - " + document.getElementById("textBox"+i).value)
+            }
+            else{
+                for(let j = 1, countor = 0; document.getElementById("textLabel" + i + "row" + j) != undefined && document.getElementById("textLabel" + i + "row" + j) != null ; j++){
+                    if(document.getElementById("textBox" + i + "row" + j).checked){
+                        arr[i][countor] = document.getElementById("textLabel" + i + "row" + j).textContent
+                        countor++;
+                        createCookie("checkq" + (Number(range[1]) + i) + "num" + (9*i+j) ,true)
+                        // createCookie(Questions[i][j], document.getElementById("textLabel"+i+"row"+j).value)
+                        // console.log("new cookie: " + Questions[i][0] + " - " + document.getElementById("textLabel"+i+"row"+j).value)
+                    }
+                    console.log(document.getElementById("textLabel" + i + "row" + j).textContent)
+                    console.log(document.getElementById("textBox" + i + "row" + j).checked)
+                    //console.log(arr[i][j])
+                }
+                // arr[i][0] = document.getElementById("textLabel" + i + "row" + 1).textContent
+                // console.log(arr[i][0])
+            }
+            //console.log(document.getElementById("textBox"+i).type)
+        }
+        console.log(arr)
+        
+        createCookie(("link" + Number(range[1])) , fillFromArray(Number(range[1]), arr))
+        //createCookie(("link" + (Number(range[2])-1)) , fillOne(Number(range[2]), ))
+        createCookie("timerLink", fillOne(Number(range[2])-1 ,document.getElementById("timerText").value))
+        createCookie("timer", document.getElementById("timerText").value)
+    }
+    
+    function goforward(){
+        buildArr()
+        // if(getPages().length > nextPage){
+        //     //window.open(getPages()[nextPage] + '&index=' + (nextPage+1))
+        //     window.location.href = getPages()[nextPage] + '&index=' + (nextPage+1)
+        // }
+        //window.close()
+        if (getPages().length > nextPage) {
+            window.location.href = getPages()[nextPage] + '&index=' + (nextPage+1)
         }
         else{
-            for(let j = 1, countor = 0; document.getElementById("textLabel" + i + "row" + j) != undefined && document.getElementById("textLabel" + i + "row" + j) != null ; j++){
-                if(document.getElementById("textBox" + i + "row" + j).checked){
-                    arr[i][countor] = document.getElementById("textLabel" + i + "row" + j).textContent
-                    countor++;
-                    
-                    // createCookie(Questions[i][j], document.getElementById("textLabel"+i+"row"+j).value)
-                    // console.log("new cookie: " + Questions[i][0] + " - " + document.getElementById("textLabel"+i+"row"+j).value)
-                }
-                console.log(document.getElementById("textLabel" + i + "row" + j).textContent)
-                console.log(document.getElementById("textBox" + i + "row" + j).checked)
-                //console.log(arr[i][j])
-            }
-            // arr[i][0] = document.getElementById("textLabel" + i + "row" + 1).textContent
-            // console.log(arr[i][0])
+            window.location.href = 'index.html'
         }
-        //console.log(document.getElementById("textBox"+i).type)
     }
-    console.log(arr)
     
-    createCookie(("link" + Number(range[1])) , fillFromArray(Number(range[1]), arr))
-    createCookie(("link" + Number(range[2]-1)), fillOne(Number(range[2]-1), document.getElementById('timerText').value))
-}
-
-function goforward(){
-    buildArr()
-    if(getPages().length > nextPage){
-        window.open(getPages()[nextPage] + '&index=' + (nextPage+1))
+    function goback(){
+        buildArr()
+        // if(nextPage > 1){
+        //     //window.open(getPages()[nextPage-2] + '&index=' + (nextPage-1))
+            
+        // }
+        if (window.history.length === 1) {
+            window.close();
+        }
+        else {
+            window.history.back();
+        }
+        //window.close()
     }
-    window.close()
-}
-
-function goback(){
-    buildArr()
-    if(nextPage > 1){
-        window.open(getPages()[nextPage-2] + '&index=' + (nextPage-1))
-    }
-    window.close()
-}
-
-</script>
+    
+    </script>
 
 <h1 style="color: white;">
     זמן טיפוס
