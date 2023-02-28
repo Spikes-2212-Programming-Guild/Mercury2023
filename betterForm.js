@@ -34,7 +34,7 @@ function buildHTML(formwhere, until){
                 console.log("cookie is empty 2")
             }
         }
-        else{
+        else if(i == 20){
             for (let j = 1, lbl, tembel = document.createElement("table"), row, minicell; j < Questions[i].length; j++) {
                 row = tembel.insertRow(j - 1)
                 minicell = row.insertCell(0)
@@ -61,13 +61,41 @@ function buildHTML(formwhere, until){
                 cell.appendChild(tembel)
               }              
         }
-        
-        if(window.innerHeight < window.innerWidth){
-            text.style.fontSize = (window.innerWidth/200)*(window.innerHeight/100)*0.5 + "px"
-        }
         else{
-            text.style.fontSize = (window.innerWidth/100)*(window.innerHeight/200) + "px"
+            for(let j = 1, lbl, tembel = document.createElement("table"), row, minicell; j < Questions[i].length; j++) {
+                row = tembel.insertRow(j - 1)
+                minicell = row.insertCell(0)
+                lbl = document.createElement("label")
+                lbl.textContent = Questions[i][j]
+                lbl.id = "textLabel" + (i - formwhere) + "row" + j
+                lbl.style.color = "white"
+                lbl.style.fontSize = window.innerWidth/22 + "px"
+                textBox = document.createElement("input")
+                textBox.id = "textBox" + (i - formwhere) + "row" + j
+                textBox.style.height = window.innerWidth/25 + "px"
+                textBox.style.width = window.innerWidth/25 + "px"
+                textBox.name = "radio" + i
+                textBox.type = "radio"
+                try{
+                    textBox.checked = document.cookie.split("checkq" + i + "num" + (9*(i-formwhere)+j) + "=")[1].split("expires")[0]
+                    textBox.checked = true
+                }
+                catch{
+                    console.log("cookie is empty")
+                }
+                minicell.appendChild(lbl)
+                minicell.appendChild(textBox)
+                
+                cell.appendChild(tembel)
+              }
         }
+        
+        //if(window.innerHeight < window.innerWidth){
+            text.style.fontSize = (window.innerWidth/100)*(window.innerHeight/50)*0.5 + "px"
+        // }
+        // else{
+        //     text.style.fontSize = (window.innerWidth/50)*(window.innerHeight/200) + "px"
+        // }
         console.log(window.innerWidth)
 
         if(Questions.length > i){
@@ -80,5 +108,6 @@ function buildHTML(formwhere, until){
             text.textContent = "click here to get free iPhone"
         }
     }
+
     document.body.appendChild(tambel)
 }
