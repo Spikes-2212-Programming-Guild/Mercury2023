@@ -6,32 +6,6 @@
 <center>
     <h1 style="color: rgb(255, 255, 255);">Spikes Mercury 2023</h1>
 </center>
-<table>
-    <!-- <tr>
-        
-            <button onclick="openGroupInfo()" style="width: 100%; height: 30px; font-size: 18px;">Enter group info</button>
-    </tr>
-    <tr><p></p></tr>
-    <tr>
-            <button onclick="openGrid()" style="width: 50%">Autonomous grid</button>        
-            <button onclick="openGrid2()" style="width: 50%">Teleop grid</button>
-        
-    </tr>
-    <tr>
-            <button onclick="openMiddlePart()" style="width: 50%">Autonomous climbed</button>
-            <button onclick="openLastPart()" style="width: 50%">Teleop info</button>
-        
-    </tr>
-    <tr><p></p></tr> -->
-    <tr>
-            <button onclick="startQuiz()" style="width: 100%; height: 40px; font-size: 25px;">Enter info >></button>
-    </tr>
-    <tr>
-            &ensp;
-           <button onclick="answarePLZ()" style="width: 100%; height: 50px; font-size: 30px; background: rgb(22, 185, 30); border: none; color: white">Send data >></button>
-        
-    </tr>
-</table>
 
 <!-- <button onclick="veryTest()">get my cookie so no one eat it</button> -->
 
@@ -44,7 +18,8 @@
 <script>
 
 function startQuiz(){
-    window.open(getPages()[0] + '&index=' + (1))//'goodForm.html?qs=q0q4')//
+    //window.open(getPages()[0] + '&index=' + (1))//'goodForm.html?qs=q0q4')//
+    window.location.href = getPages()[0] + '&index=' + 1
 }
 
 function openGrid(){
@@ -74,8 +49,12 @@ function answarePLZ(){
     //console.log('https://docs.google.com/forms/d/e/1FAIpQLScuioqPC4Ppw7OpSQ7ViJmiPlTAQ1c3rbzOksuDDPlmMS5s1w/viewform?' + document.cookie.split("Gridlink4=")[1].split("expires")[0] + document.cookie.split("Gridlink10=")[1].split("expires")[0] + document.cookie.split("link0=")[1].split("expires")[0]  + document.cookie.split("link9=")[1].split("expires")[0] + document.cookie.split("link15=")[1].split("expires")[0] + document.cookie.split("link16=")[1].split("expires")[0])
     try{
         //let openLinko = encodeURIComponent(document.cookie.split("Gridlink4=")[1].split("expires")[0] + document.cookie.split("Gridlink10=")[1].split("expires")[0] + document.cookie.split("link0=")[1].split("expires")[0]  + document.cookie.split("link9=")[1].split("expires")[0] + document.cookie.split("link15=")[1].split("expires")[0] /*+ document.cookie.split("link16=")[1].split("expires")[0]*/)
-        window.open('https://docs.google.com/forms/d/e/1FAIpQLScuioqPC4Ppw7OpSQ7ViJmiPlTAQ1c3rbzOksuDDPlmMS5s1w/viewform?' + encodeURI(document.cookie.split("Gridlink4=")[1].split("expires")[0] + document.cookie.split("Gridlink10=")[1].split("expires")[0] + document.cookie.split("link0=")[1].split("expires")[0]  + document.cookie.split("link9=")[1].split("expires")[0] + document.cookie.split("link15=")[1].split("expires")[0] + document.cookie.split("link16=")[1].split("expires")[0]) + document.cookie.split("link17=")[1].split("expires")[0])
-        console.log(encodeURI(document.cookie.split("link17=")[1].split("expires")[0]))
+        //window.open('https://docs.google.com/forms/d/e/1FAIpQLScuioqPC4Ppw7OpSQ7ViJmiPlTAQ1c3rbzOksuDDPlmMS5s1w/viewform?' + encodeURI(document.cookie.split("Gridlink4=")[1].split("expires")[0] + document.cookie.split("Gridlink10=")[1].split("expires")[0] /*+ document.cookie.split("link0=")[1].split("expires")[0]  + document.cookie.split("link9=")[1].split("expires")[0] + document.cookie.split("link15=")[1].split("expires")[0] + document.cookie.split("link16=")[1].split("expires")[0] + document.cookie.split("link17=")[1].split("expires")[0]*/))
+        //console.log('https://docs.google.com/forms/d/e/1FAIpQLScuioqPC4Ppw7OpSQ7ViJmiPlTAQ1c3rbzOksuDDPlmMS5s1w/viewform?' + encodeURI(document.cookie.split("Gridlink4=")[1].split("expires")[0] + document.cookie.split("Gridlink10=")[1].split("expires")[0] + document.cookie.split("link0=")[1].split("expires")[0] + document.cookie.split("link9=")[1].split("expires")[0] + document.cookie.split("link15=")[1].split("expires")[0] + document.cookie.split("link15=")[1].split("expires")[0] + document.cookie.split("timer=")[1].split("expires")[0] + document.cookie.split("link17=")[1].split("expires")[0]/**/))
+        window.open('https://docs.google.com/forms/d/e/1FAIpQLScuioqPC4Ppw7OpSQ7ViJmiPlTAQ1c3rbzOksuDDPlmMS5s1w/viewform?' + encodeURI(document.cookie.split("Gridlink4=")[1].split("expires")[0] + document.cookie.split("Gridlink10=")[1].split("expires")[0] + document.cookie.split("link0=")[1].split("expires")[0] + document.cookie.split("link9=")[1].split("expires")[0] + document.cookie.split("link15=")[1].split("expires")[0] + document.cookie.split("link15=")[1].split("expires")[0] + document.cookie.split("timerLink=")[1].split("expires")[0] + document.cookie.split("link17=")[1].split("expires")[0]))
+        //console.log(encodeURI(document.cookie.split("link17=")[1].split("expires")[0]))
+        eraseAllCookies()
+
     }
     catch{
         window.alert('first fill all of the questions please')
@@ -84,4 +63,32 @@ function answarePLZ(){
     //window.open('https://docs.google.com/forms/d/e/1FAIpQLScuioqPC4Ppw7OpSQ7ViJmiPlTAQ1c3rbzOksuDDPlmMS5s1w/viewform?' + document.cookie.split("link9=")[1].split("expires")[0])
 }
 </script>
+
+<table>
+    <!-- <tr>
+        
+            <button onclick="openGroupInfo()" style="width: 100%; height: 30px; font-size: 18px;">Enter group info</button>
+    </tr>
+    <tr><p></p></tr>
+    <tr>
+            <button onclick="openGrid()" style="width: 50%">Autonomous grid</button>        
+            <button onclick="openGrid2()" style="width: 50%">Teleop grid</button>
+        
+    </tr>
+    <tr>
+            <button onclick="openMiddlePart()" style="width: 50%">Autonomous climbed</button>
+            <button onclick="openLastPart()" style="width: 50%">Teleop info</button>
+        
+    </tr>
+    <tr><p></p></tr> -->
+    <tr>
+            <button onclick="startQuiz()" style="width: 100%; height: 40px; font-size: 25px;">Enter info >></button>
+    </tr>
+    <tr>
+            &ensp;
+           <button onclick="answarePLZ()" style="width: 100%; height: 50px; font-size: 30px; background: rgb(22, 185, 30); border: none; color: white">Send data >></button>
+        
+    </tr>
+</table>
+
 </body></html>
