@@ -7,7 +7,7 @@ let coneTextColor = "rgb(255,0,77)"
 let coneColor = "rgb(255, 255, 0)"
 let cube = '◨' // ■ ▣ ▪ ▨ ▩ █ ▦ ▢ ⎕ ⬕ □ ◨ ◪ ⬔ █ ▪
 
-function buildHTML(){
+function buildHTML(GridNum){
     
     for(let i = 0, table; i < 4 ;i++){
         table = document.createElement("table")
@@ -60,9 +60,8 @@ function buildHTML(){
             //bt.style.textAlign = "center";
             bt.style.verticalAlign = "middle";
             
-
-            
             bt.id = "button" + (9*i+j);
+
             cell.appendChild(bt);
             if(j%3 === 1 && i < 2){
                 bt.style.backgroundColor = cubeColor
@@ -108,7 +107,15 @@ function buildHTML(){
                 }
                 console.log("row: " + (i+1) + " num: " + (j+1))
                 //bt.textContent = Number(bt.textContent)*-1 + 1
-            }                
+                document.cookie = "grid" + GridNum + "button" + (9*i+j) + "=" + document.getElementById("button" + (9*i+j)).textContent + "expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/; SameSite=Lax"
+            }
+            try{
+                bt.textContent = document.cookie.split("grid" + GridNum + "button" + (9*i+j) + "=")[1].split("expires")[0]
+                
+            }
+            catch{
+                console.log("wasnt any data to recover")
+            }
         }
         document.body.appendChild(table);
     }
