@@ -20,7 +20,12 @@ button1.style.backgroundColor = "white"
 button1.style.fontSize = "32px"
 document.body.appendChild(button1)
 
-
+try{
+    timer.value = document.cookie.split("timer=")[1].split("expires")[0]
+}
+catch{
+    console.log("timer not found")
+}
 
 function timerClick(){
     if(button1.textContent === "start"){
