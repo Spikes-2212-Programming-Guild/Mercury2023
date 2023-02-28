@@ -41,7 +41,7 @@
     console.log(nextPage)
 
     //toast()
-    buildHTML()
+    buildHTML(range[1])
 
     function sendAndCreate(){
         createCookie('Gridlink' + Number(range[1]), fillFromTamble(buildArray(), Number(range[1])))
@@ -51,29 +51,35 @@
         // window.close()
     }
     
-    function goforward(){
-        sendAndCreate()
-        if(getPages().length > nextPage){
-            window.open(getPages()[nextPage] + '&index=' + (nextPage+1))
-            window.close()
-        }
-        else{
-            window.close()
-        }
-        
+function goforward(){
+    sendAndCreate()
+    // if(getPages().length > nextPage){
+    //     //window.open(getPages()[nextPage] + '&index=' + (nextPage+1))
+    //     window.location.href = getPages()[nextPage] + '&index=' + (nextPage+1)
+    // }
+    //window.close()
+    if (getPages().length > nextPage) {
+        window.location.href = getPages()[nextPage] + '&index=' + (nextPage+1)
     }
+    else{
+        window.location.href = 'index.html'
+    }
+}
 
-    function goback(){
-        sendAndCreate()
-        if(nextPage > 1){
-            window.open(getPages()[nextPage-2] + '&index=' + (nextPage-1))
-            window.close()
-        }
-        else{
-            window.close()
-        }
+function goback(){
+    sendAndCreate()
+    // if(nextPage > 1){
+    //     //window.open(getPages()[nextPage-2] + '&index=' + (nextPage-1))
         
+    // }
+    if (window.history.index != 0) {
+        window.history.back();
     }
+    else{
+        window.close()
+    }
+    //window.close()
+}
 </script>
 <!-- &ensp; -->
 <!-- <script src="timer.js"></script> -->
