@@ -55,8 +55,16 @@ function buildHTML(GridNum){
             bt.style.display = "inline-flex";
             bt.style.alignItems = "center";
             bt.style.justifyContent = "center";
-            bt.style.width = (window.innerWidth - 50) / 9 + "px";
-            bt.style.height = (window.innerWidth - 50) / 9 + "px";
+            if(/iPhone/i.test(navigator.userAgent)){
+                console.log("iPhone looser here")
+                bt.style.width = "50px";
+                bt.style.height = "50px";
+            }
+            else{
+                bt.style.width = (window.innerWidth - 50) / 9 + "px";
+                bt.style.height = (window.innerWidth - 50) / 9 + "px";
+            }
+
             bt.style.fontSize = (window.innerWidth - 50) / 9 + "px";
             //bt.style.textAlign = "center";
             bt.style.verticalAlign = "middle";
@@ -97,23 +105,35 @@ function buildHTML(GridNum){
                     bt.textContent = cone
                     let bt2 = document.getElementById("button" + (9*(i+1)+j))
                     bt2.textContent = ""
+                    if(/iPhone/i.test(navigator.userAgent)){
+                        console.log("iPhone looser here")
+                    }
+                    else{
+                        document.cookie = "grid" + GridNum + "button" + (9*(i+1)+j) + "=" + "expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/; SameSite=Lax"
+                    }
                 }
                 else if(bt.textContent === "" && i === 3){
                     bt.textContent = cube
                     let bt2 = document.getElementById("button" + (9*(i-1)+j))
                     bt2.textContent = ""
+                    if(/iPhone/i.test(navigator.userAgent)){
+                        console.log("iPhone looser here")
+                    }
+                    else{
+                        document.cookie = "grid" + GridNum + "button" + (9*(i-1)+j) + "=" + "expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/; SameSite=Lax"
+                    }
                 }
                 else{
                     bt.textContent = ""
                 }
                 console.log("row: " + (i+1) + " num: " + (j+1))
                 //bt.textContent = Number(bt.textContent)*-1 + 1
-                if (/iPhone/i.test(navigator.userAgent)) {
-                    window.alert("you have an iPhone you noob")
+                if (/iPhone/i.test(navigator.userAgent) && false) {
+                    window.alert("you have an iPhone you noob! too bad you didn't have mony to buy an android...")
                 }
                 else{
                     document.cookie = "grid" + GridNum + "button" + (9*i+j) + "=" + document.getElementById("button" + (9*i+j)).textContent + "expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/; SameSite=Lax"
-                    window.alert("you arn't using an iPhone! you're good!")
+                    console.log("you arn't using an iPhone! you're good!")
                 }
             }
             try{
