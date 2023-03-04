@@ -108,7 +108,13 @@ function buildHTML(GridNum){
                 }
                 console.log("row: " + (i+1) + " num: " + (j+1))
                 //bt.textContent = Number(bt.textContent)*-1 + 1
-                document.cookie = "grid" + GridNum + "button" + (9*i+j) + "=" + document.getElementById("button" + (9*i+j)).textContent + "expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/; SameSite=Lax"
+                if (/iPhone/i.test(navigator.userAgent)) {
+                    window.alert("you have an iPhone you noob")
+                }
+                else{
+                    document.cookie = "grid" + GridNum + "button" + (9*i+j) + "=" + document.getElementById("button" + (9*i+j)).textContent + "expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/; SameSite=Lax"
+                    window.alert("you arn't using an iPhone! you're good!")
+                }
             }
             try{
                 bt.textContent = document.cookie.split("grid" + GridNum + "button" + (9*i+j) + "=")[1].split("expires")[0]
