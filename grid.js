@@ -55,12 +55,14 @@ function buildHTML(GridNum){
             bt.style.display = "inline-flex";
             bt.style.alignItems = "center";
             bt.style.justifyContent = "center";
+            bt.style.fontFamily = "Arial, sans-serif;"
+
             bt.style.width = (window.innerWidth - 50) / 9 + "px";
             bt.style.height = (window.innerWidth - 50) / 9 + "px";
+
             bt.style.fontSize = (window.innerWidth - 50) / 9 + "px";
-            //bt.style.textAlign = "center";
+            bt.style.textAlign = "center";
             bt.style.verticalAlign = "middle";
-            
             bt.id = "button" + (9*i+j);
 
             cell.appendChild(bt);
@@ -84,8 +86,7 @@ function buildHTML(GridNum){
                 bt.style.color = cubeTextColor
                 bt.style.borderColor = cubeTextColor
             }
-            //bt.style.textEmphasisColor = "blue"
-            //bt.style.border = "none"
+
             bt.onclick = function test(){
                 if(bt.textContent === "" && bt.style.backgroundColor === cubeColor && i < 3){
                     bt.textContent = cube
@@ -107,22 +108,14 @@ function buildHTML(GridNum){
                     bt.textContent = ""
                 }
                 console.log("row: " + (i+1) + " num: " + (j+1))
-                //bt.textContent = Number(bt.textContent)*-1 + 1
-                document.cookie = "grid" + GridNum + "button" + (9*i+j) + "=" + document.getElementById("button" + (9*i+j)).textContent + "expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/; SameSite=Lax"
-            }
-            try{
-                bt.textContent = document.cookie.split("grid" + GridNum + "button" + (9*i+j) + "=")[1].split("expires")[0]
-                
-            }
-            catch{
-                console.log("wasnt any data to recover")
             }
         }
         document.body.appendChild(table);
     }
+    retreveGrid(GridNum);
 }
 
-function buildArray(){
+function buildArray(startIndex){
     let data = new Array(3)
     
     for(let i = 0; i < 4 ;i++){
@@ -167,6 +160,45 @@ function buildArray(){
         // }
         
     }
+    //var dataSTarr = JSON.stringify(data)
+    //document.cookie = "gridArrayCookie" + startIndex + "=" + dataSTarr + "expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/; SameSite=Lax"
+    //$.cookie("gridArrayCookie" + startIndex, JSON.stringify(data));
+    //let sahuy = [456, 23, 89]
+    let sahuy = JSON.stringify(data)
+    console.log("sahuy: " + sahuy)
+    document.cookie = "gridArrayCookie" + startIndex + "=" + sahuy + "expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/; SameSite=Lax"
+    // sahuy = document.cookie.split("gridArrayCookie" + startIndex + "=")[1].split("expires")[0]
+    // sahuy = JSON.parse(sahuy)
+    // console.log("sahuy2: " + sahuy)
+    
     console.log(data)
     return data;
+}
+
+function retreveGrid(startIndex){
+    for(let i = 0; i < 3 ; i++){
+        for(let j = 0; j < 9 ; j++){
+            //var storedAry = JSON.parse($.cookie("gridArrayCookie" + startIndex));
+            try{
+                let sahuy = document.cookie.split("gridArrayCookie" + startIndex + "=")[1].split("expires")[0]
+                sahuy = JSON.parse(sahuy)
+                console.log("seccess: " + i + j + " " + sahuy[i][j])
+
+                let btTS = document.getElementById("button" + (9*i+j))
+                if(sahuy[i][j] == 1 && i < 2){
+                    btTS.textContent = cube
+                }
+                else if(sahuy[i][j] == 1 && i == 2){
+                    btTS = document.getElementById("button" + (9*(i+1)+j))
+                    btTS.textContent = cube
+                }
+                else if(sahuy[i][j] == 2){
+                    btTS.textContent = cone
+                }
+            }
+            catch{
+                console.log("no cookies for you")
+            }
+        }
+    }
 }
