@@ -21,7 +21,7 @@ button1.style.fontSize = "32px"
 document.body.appendChild(button1)
 
 try{
-    timer.value = document.cookie.split("timer=")[1].split("expires")[0]
+    timer.value = document.cookie.split("timer=")[1].split(";")[0]
 }
 catch{
     console.log("timer not found")
