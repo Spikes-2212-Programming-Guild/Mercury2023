@@ -1,8 +1,20 @@
 <!DOCTYPE html>
 <html lang="en"><title>Questions</title>
-
+<head>
+    <meta charset="UTF-8">
+    <title>My HTML Page</title>
+    <!-- Paste the Google Fonts link here -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew&display=swap" rel="stylesheet">
+    <style>
+      /* Apply the font to the desired HTML elements using CSS */
+      body {
+        font-family: 'Noto Sans Hebrew', sans-serif;
+      }
+    </style>
+  </head>
+  
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<body style="background-color:rgb(44, 44, 44);text-align: center; align-items: center; align-content: center; display: grid; place-items: center;">
+<body style="background-color:rgb(44, 44, 44);text-align: center; align-items: center; align-content: center; display: grid; place-items: center; font-family: 'Noto Sans Hebrew', sans-serif;">
 
 <script>
     let TitlE = new URLSearchParams(window.location.search);
@@ -18,7 +30,7 @@
 <script src="betterForm.js"></script>
 <script src="modifyCookies.js"></script>
 <script src="buildLink.js"></script>
-<script src="Questions.js"></script>
+<!-- <script src="Questions.js"></script> -->
 <script src="pages.js"></script>
 
 
@@ -73,6 +85,8 @@ function buildArr(){
     console.log(arr)
     
     createCookie(("link" + Number(range[1])) , fillFromArray(Number(range[1]), arr))
+    console.log("sure: " + getCookieContent("link" + Number(range[1])))
+    console.log("test56  " + Number(range[1]))
     
 }
 
@@ -97,12 +111,12 @@ function goback(){
     //     //window.open(getPages()[nextPage-2] + '&index=' + (nextPage-1))
         
     // }
-    if (window.history.length === 1) {
-        window.close();
-    }
-    else {
-        window.history.back();
-    }
+    // if (window.history.length === 1) {
+    //     window.close();
+    // }
+    // else {
+    window.history.back();
+    //}
     //window.close()
 }
 
