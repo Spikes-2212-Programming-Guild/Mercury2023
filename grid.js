@@ -166,7 +166,7 @@ function buildArray(startIndex){
     //let sahuy = [456, 23, 89]
     let sahuy = JSON.stringify(data)
     console.log("sahuy: " + sahuy)
-    document.cookie = "gridArrayCookie" + startIndex + "=" + sahuy + "expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/; SameSite=Lax"
+    document.cookie = "gridArrayCookie" + encodeURIComponent(startIndex) + "=" + sahuy + "; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/; SameSite=Lax"
     // sahuy = document.cookie.split("gridArrayCookie" + startIndex + "=")[1].split("expires")[0]
     // sahuy = JSON.parse(sahuy)
     // console.log("sahuy2: " + sahuy)
@@ -180,10 +180,9 @@ function retreveGrid(startIndex){
         for(let j = 0; j < 9 ; j++){
             //var storedAry = JSON.parse($.cookie("gridArrayCookie" + startIndex));
             try{
-                let sahuy = document.cookie.split("gridArrayCookie" + startIndex + "=")[1].split("expires")[0]
+                let sahuy = decodeURIComponent(document.cookie.split("gridArrayCookie" + startIndex + "=")[1].split(";")[0])
                 sahuy = JSON.parse(sahuy)
                 console.log("seccess: " + i + j + " " + sahuy[i][j])
-
                 let btTS = document.getElementById("button" + (9*i+j))
                 if(sahuy[i][j] == 1 && i < 2){
                     btTS.textContent = cube
