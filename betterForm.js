@@ -27,7 +27,7 @@ function buildHTML(formwhere, until){
             cell.appendChild(textBox)
             try{
                 //textBox.value = document.cookie.split("textbox" + i)
-                textBox.value = document.cookie.split("textbox" + i + "=")[1].split("expires")[0]
+                textBox.value = decodeURIComponent(document.cookie.split("textbox" + i + "=")[1].split(";")[0])
                 //textBox.checked = true
             }
             catch{
@@ -49,7 +49,7 @@ function buildHTML(formwhere, until){
                 textBox.style.width = window.innerWidth/25 + "px"
                 textBox.type = "checkbox"
                 try{
-                    textBox.checked = document.cookie.split("checkq" + i + "num" + (9*(i-formwhere)+j) + "=")[1].split("expires")[0]
+                    textBox.checked = decodeURIComponent(document.cookie.split("checkq" + i + "num" + (9*(i-formwhere)+j) + "=")[1].split("; expires")[0])
                     textBox.checked = true
                 }
                 catch{
@@ -77,7 +77,7 @@ function buildHTML(formwhere, until){
                 textBox.name = "radio" + i
                 textBox.type = "radio"
                 try{
-                    textBox.checked = document.cookie.split("checkq" + i + "num" + (9*(i-formwhere)+j) + "=")[1].split("expires")[0]
+                    textBox.checked = decodeURIComponent(document.cookie.split("checkq" + i + "num" + (9*(i-formwhere)+j) + "=")[1].split("; expires")[0])
                     textBox.checked = true
                 }
                 catch{
