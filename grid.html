@@ -2,7 +2,7 @@
 <html lang="en"><title>Grid</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<body style="background-color:rgb(44, 44, 44); text-align: center;">
+<body style="background-color:rgb(44, 44, 44);text-align: center; align-items: center; align-content: center; display: grid; place-items: center;">
 
 <script>
     let TitlE = new URLSearchParams(window.location.search);
@@ -44,45 +44,24 @@
     buildHTML(range[1])
 
     function sendAndCreate(){
-        createCookie('Gridlink' + Number(range[1]), fillFromTamble(buildArray(), Number(range[1])))
-        // if(getPages().length > nextPage){
-        //     window.open(getPages()[nextPage] + '&index=' + (nextPage+1))
-        // }
-        // window.close()
+        createCookie('Gridlink' + Number(range[1]), fillFromTamble(buildArray(range[1]), Number(range[1])))
     }
     
-function goforward(){
-    sendAndCreate()
-    // if(getPages().length > nextPage){
-    //     //window.open(getPages()[nextPage] + '&index=' + (nextPage+1))
-    //     window.location.href = getPages()[nextPage] + '&index=' + (nextPage+1)
-    // }
-    //window.close()
-    if (getPages().length > nextPage) {
-        window.location.href = getPages()[nextPage] + '&index=' + (nextPage+1)
+    function goforward(){
+        sendAndCreate()
+        if (getPages().length > nextPage) {
+            window.location.href = getPages()[nextPage] + '&index=' + (nextPage+1)
+        }
+        else{
+            window.location.href = 'index.html'
+        }
     }
-    else{
-        window.location.href = 'index.html'
-    }
-}
 
-function goback(){
-    sendAndCreate()
-    // if(nextPage > 1){
-    //     //window.open(getPages()[nextPage-2] + '&index=' + (nextPage-1))
-        
-    // }
-    if (window.history.index != 0) {
+    function goback(){
+        sendAndCreate()
         window.history.back();
     }
-    else{
-        window.close()
-    }
-    //window.close()
-}
 </script>
-<!-- &ensp; -->
-<!-- <script src="timer.js"></script> -->
 
 &ensp;
 <div style="width: 100%;">
