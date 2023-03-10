@@ -55,11 +55,14 @@ function fillFromArray(fromWhere, answares){
         console.log("i:"+i-fromWhere)
         for(let j = 0; j < answares[i-fromWhere].length;j++){
             console.log("j:"+j)
-            if(answares[i-fromWhere][j] != "")
+            // if(answares[i-fromWhere][j] != ""){
+
+            // }
             theLink += "&entry." + entrys[i] + "=" + answares[i-fromWhere][j]
         }
     }
-    theLink = (theLink)
+    //theLink = (theLink)
+    console.log(theLink)
     return theLink
 }
 
@@ -68,7 +71,7 @@ function fillOne(ondex, answare){
 }
 
 function unbuild(cookieTag){
-    let theCookie = document.cookie.split(cookieTag+"=")[1].split("expires")[0]
+    let theCookie = document.cookie.split(cookieTag+"=")[1].split(";")[0]
     theCookie = theCookie.split('&entry.')
 
     for(let i = 0; i< theCookie.length ;i++){
